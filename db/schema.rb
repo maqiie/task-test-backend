@@ -11,11 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -43,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
     t.string "title"
     t.text "description"
     t.datetime "due_date"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_completed_tasks_on_user_id"
@@ -59,8 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
+    t.bigint "user_id"
+    t.bigint "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -70,8 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.integer "reminder_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "reminder_id", null: false
+    t.bigint "user_id", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,12 +88,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.text "message"
     t.boolean "read"
     t.datetime "created_at", null: false
@@ -108,8 +111,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
   end
 
   create_table "reminder_users", force: :cascade do |t|
-    t.integer "reminder_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "reminder_id", null: false
+    t.bigint "user_id", null: false
     t.integer "relationship_category", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,12 +125,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_232517) do
     t.string "title"
     t.text "description"
     t.datetime "due_date"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "repeat_interval"
     t.string "repeat_interval_unit"
-    t.integer "note_id"
+    t.bigint "note_id"
     t.string "location"
     t.string "priority"
     t.integer "calendar_id"
