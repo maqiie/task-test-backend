@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+      background-color: #4CAF50;
+      color: #ffffff;
+      padding: 10px 0;
+      border-radius: 8px 8px 0 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .content h2 {
+      color: #333333;
+    }
+    .content p {
+      color: #666666;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px 0;
+      color: #aaaaaa;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Tasker</h1>
+    </div>
+    <div class="content">
+      <h2>Hello, <%= @sender.name %>!</h2>
+      <p>Your friend request to <%= @receiver.name %> has been declined. You can try connecting with other friends.</p>
+    </div>
+    <div class="footer">
+      <p>&copy; 2024 Tasker. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
