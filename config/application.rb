@@ -53,11 +53,12 @@ module DeviseTokenAuthTwitter
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*, https://task-test-roan.vercel.app/'
+        origins 'https://task-test-roan.vercel.app' # The exact origin of your frontend
         resource '*',
-                 :headers => :any,
-                 :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-                 :methods => [:get, :post, :options, :delete, :put,:patch]
+          headers: :any,
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :options, :delete, :put, :patch],
+          credentials: true # Include this if you are using cookies or other credentials
       end
     end
     # ここまで
