@@ -165,7 +165,6 @@
 # end
 # config/application.rb
 # config/application.rb
-
 require_relative 'boot'
 
 require "rails"
@@ -200,7 +199,7 @@ module DeviseTokenAuthTwitter
     # CORS configuration
     Rails.application.config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://tasker-test.vercel.app/'
+        origins 'https://tasker-test.vercel.app'
     
         resource '*',
           headers: :any,
