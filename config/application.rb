@@ -152,7 +152,7 @@ module DeviseTokenAuthTwitter
     # CORS configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://task-test-roan.vercel.app' # Add your allowed origins here
+        origins 'https://task-test-roan.vercel.app', 'https://task-test-git-main-maqiies-projects.vercel.app/' # Add your allowed origins here
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
