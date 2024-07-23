@@ -152,11 +152,11 @@ module DeviseTokenAuthTwitter
     # CORS configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
+        origins 'https://task-test-roan.vercel.app' # Add your allowed origins here
         resource '*',
           headers: :any,
-          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          methods: [:get, :post, :options, :delete, :put, :patch]
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          credentials: true # if you need to send cookies or authentication headers
       end
     end
   end

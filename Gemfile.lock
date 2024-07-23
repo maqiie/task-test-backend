@@ -76,6 +76,8 @@ GEM
     cancancan (3.5.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    cors (1.0.1)
+      multi_json
     crass (1.0.6)
     csv (3.3.0)
     date (3.3.3)
@@ -124,6 +126,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.19.0)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
     net-imap (0.3.7)
       date
@@ -215,6 +218,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   cancancan
+  cors
   debug
   devise
   devise_token_auth
