@@ -150,14 +150,16 @@ module DeviseTokenAuthTwitter
     config.middleware.use ActionDispatch::Flash
 
     # CORS configuration
-    config.middleware.insert_before 0, Rack::Cors do
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://task-test-roan.vercel.app', 'https://task-test-git-main-maqiies-projects.vercel.app/' # Add your allowed origins here
+        origins 'https://task-test-git-main-maqiies-projects.vercel.app'
+    
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
-          credentials: true # if you need to send cookies or authentication headers
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
       end
     end
+    
   end
 end
