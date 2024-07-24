@@ -127,7 +127,7 @@ config.action_cable.allowed_request_origins = [
   'https://tasker-test.vercel.app'
 ]
 
-  
+config.force_ssl = false,
   # config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
 
   # Load additional ActionCable configuration.

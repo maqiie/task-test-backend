@@ -20,8 +20,12 @@ development:
 test:
   adapter: async
 
+
+
 production:
   adapter: redis
   url: redis://red-cqfu7gdds78s73c5snsg:6379
   channel_prefix: your_app_production
-
+  allowed_request_origins:
+    - https://task-test-backend.onrender.com
+    - https://tasker-test.vercel.app
