@@ -117,16 +117,12 @@ Rails.application.configure do
   # Set the time zone.
   config.time_zone = 'Nairobi'
 
-  # Set the URL for ActionCable in production.
-  config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-
-  # Allow WebSocket connections from the specified domains.
-  # config/environments/development.rb
-config.action_cable.allowed_request_origins = [
-  'http://localhost:3000',
-  'https://tasker-test.vercel.app'
-]
-
+  Rails.application.configure do
+    config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
+    config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
+    config.action_cable.cable = Rails.application.config_for(:cable)
+  end
+  
 config.force_ssl = false,
   # config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
 
