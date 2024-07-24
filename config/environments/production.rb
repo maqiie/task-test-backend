@@ -125,6 +125,7 @@ Rails.application.configure do
     'https://tasker-test.vercel.app',
     /https:\/\/tasker-test.vercel.app.*/
   ]
+  config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
 
   # Load additional ActionCable configuration.
   config.action_cable.cable = Rails.application.config_for(:cable)

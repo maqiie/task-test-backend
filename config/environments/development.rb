@@ -12,8 +12,8 @@ Rails.application.configure do
   config.time_zone = 'Nairobi'
 # config/environments/development.rb
 Rails.application.configure do
-  config.action_cable.url = "ws://localhost:3000/cable"
-  config.action_cable.allowed_request_origins = [ 'http://localhost:3000', /http:\/\/localhost:3000.*/ ]
+  config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
+  config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
   config.action_cable.cable = Rails.application.config_for(:cable)
 end
 
