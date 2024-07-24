@@ -7,13 +7,22 @@ Rails.application.configure do
   config.cache_classes = true
   config.time_zone = 'Nairobi'
 
- # config/environments/production.rb
-Rails.application.configure do
-  config.action_cable.url = "wss://your_production_domain/cable"
-  config.action_cable.allowed_request_origins = [ 'https://your_production_domain', /https:\/\/your_production_domain.*/ ]
-  config.action_cable.cable = Rails.application.config_for(:cable)
-end
+#  # config/environments/production.rb
+# Rails.application.configure do
+#   config.action_cable.url = "wss://your_production_domain/cable"
+#   config.action_cable.allowed_request_origins = [ 'https://your_production_domain', /https:\/\/your_production_domain.*/ ]
+#   config.action_cable.cable = Rails.application.config_for(:cable)
+# end
+ # Set the URL for ActionCable in production
+ config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
 
+ # Allow WebSocket connections from the production domain
+ config.action_cable.allowed_request_origins = [
+   'https://tasker-test.vercel.app',
+   /https:\/\/tasker-test.vercel.app.*/
+   ]
+   config.action_cable.cable = Rails.application.config_for(:cable)
+  end
   # config/environments/development.rb or config/environments/production.rb
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
