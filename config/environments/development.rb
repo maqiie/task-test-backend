@@ -17,6 +17,8 @@ Rails.application.configure do
   config.action_cable.cable = Rails.application.config_for(:cable)
 end
 
+config.force_ssl = false,
+
   config.active_storage.service = :local
 
 # config/environments/development.rb
