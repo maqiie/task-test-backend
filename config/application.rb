@@ -197,20 +197,19 @@ module DeviseTokenAuthTwitter
     config.middleware.use ActionDispatch::Flash
 
     # CORS configuration
-    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'https://tasker-test.vercel.app'
-    
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
           expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
       end
     end
-    
+
+    # Action Cable settings
+    config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
+    config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
+    config.action_cable.cable = { adapter: 'redis', url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
   end
-  # Action Cable settings
-  config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-  config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
-  config.action_cable.cable = { adapter: 'redis', url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
 end
