@@ -1,3 +1,4 @@
+
 # require "active_support/core_ext/integer/time"
 
 # Rails.application.configure do
@@ -5,131 +6,54 @@
 
 #   # Code is not reloaded between requests.
 #   config.cache_classes = true
-#   config.time_zone = 'Nairobi'
-
-# #  # config/environments/production.rb
-# # Rails.application.configure do
-# #   config.action_cable.url = "wss://your_production_domain/cable"
-# #   config.action_cable.allowed_request_origins = [ 'https://your_production_domain', /https:\/\/your_production_domain.*/ ]
-# #   config.action_cable.cable = Rails.application.config_for(:cable)
-# # end
-#  # Set the URL for ActionCable in production
-#  config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-
-#  # Allow WebSocket connections from the production domain
-#  config.action_cable.allowed_request_origins = [
-#    'https://tasker-test.vercel.app',
-#    /https:\/\/tasker-test.vercel.app.*/
-#    ]
-#    config.action_cable.cable = Rails.application.config_for(:cable)
-#   end
-#   # config/environments/development.rb or config/environments/production.rb
-# config.action_mailer.delivery_method = :smtp
-# config.action_mailer.smtp_settings = {
-#   address:              'smtp.gmail.com',
-#   port:                 587,
-#   domain:               'example.com',
-#   user_name:            ENV['GMAIL_USERNAME'],
-#   password:             ENV['GMAIL_PASSWORD'],
-#   authentication:       'plain',
-#   enable_starttls_auto: true
-# }
-
-  
-
-#   config.active_storage.service = :local
-
-#   # Eager load code on boot. This eager loads most of Rails and
-#   # your application in memory, allowing both threaded web servers
-#   # and those relying on copy on write to perform better.
-#   # Rake tasks automatically ignore this option for performance.
 #   config.eager_load = true
-
-#   # Full error reports are disabled and caching is turned on.
-#   config.consider_all_requests_local       = false
+#   config.consider_all_requests_local = false
 #   config.action_controller.perform_caching = true
 
-#   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
-#   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-#   # config.require_master_key = true
-
-#   # Disable serving static files from the `/public` folder by default since
-#   # Apache or NGINX already handles this.
-#   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
-
-#   # Compress CSS using a preprocessor.
-#   # config.assets.css_compressor = :sass
+#   # Ensure the public file server is enabled.
+#   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
 #   # Do not fallback to assets pipeline if a precompiled asset is missed.
 #   config.assets.compile = false
 
-#   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-#   # config.asset_host = "http://assets.example.com"
+#   # Store uploaded files on the local file system (see config/storage.yml for options).
+#   config.active_storage.service = :local
 
-#   # Specifies the header that your server uses for sending files.
-#   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-#   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
+#   # Do not force SSL in production.
+#   config.force_ssl = false
 
-#   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-#   # config.force_ssl = true
-
-#   # Include generic and useful information about system operation, but avoid logging too much
-#   # information to avoid inadvertent exposure of personally identifiable information (PII).
+#   # Set the logging level.
 #   config.log_level = :info
+#   config.log_tags = [:request_id]
 
-#   # Prepend all log lines with the following tags.
-#   config.log_tags = [ :request_id ]
-
-#   # Use a different cache store in production.
-#   # config.cache_store = :mem_cache_store
-
-#   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-#   # the I18n.default_locale when a translation cannot be found).
-#   config.i18n.fallbacks = true
-
-#   # Don't log any deprecations.
-#   config.active_support.report_deprecations = false
-
-#   # Use default logging formatter so that PID and timestamp are not suppressed.
+#   # Use default logging formatter.
 #   config.log_formatter = ::Logger::Formatter.new
 
-#   # Use a different logger for distributed setups.
-#   # require "syslog/logger"
-#   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
-
-#   if ENV["RAILS_LOG_TO_STDOUT"].present?
-#     logger           = ActiveSupport::Logger.new(STDOUT)
+#   # Log to STDOUT if specified.
+#   if ENV['RAILS_LOG_TO_STDOUT'].present?
+#     logger = ActiveSupport::Logger.new(STDOUT)
 #     logger.formatter = config.log_formatter
-#     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+#     config.logger = ActiveSupport::TaggedLogging.new(logger)
 #   end
 
 #   # Do not dump schema after migrations.
 #   config.active_record.dump_schema_after_migration = false
-# end
-# require "active_support/core_ext/integer/time"
 
-# Rails.application.configure do
-#   # Settings specified here will take precedence over those in config/application.rb.
+#   config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
 
-#   # Code is not reloaded between requests.
-#   config.cache_classes = true
+#   # Enable locale fallbacks for I18n.
+#   config.i18n.fallbacks = true
 
-#   # Set the time zone.
-#   config.time_zone = 'Nairobi'
+#   # Do not log deprecations.
+#   config.active_support.report_deprecations = false
 
-#   Rails.application.configure do
-#     config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-#     config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
-#     config.action_cable.cable = Rails.application.config_for(:cable)
-#   end
-  
-# config.force_ssl = false,
-#   # config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
-
-#   # Load additional ActionCable configuration.
+#   # Action Cable settings
+#   config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
+#   Rails.application.config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
+#   config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
 #   config.action_cable.cable = Rails.application.config_for(:cable)
 
-#   # Configure Action Mailer for SMTP with Gmail settings.
+#   # Configure Action Mailer.
 #   config.action_mailer.delivery_method = :smtp
 #   config.action_mailer.smtp_settings = {
 #     address:              'smtp.gmail.com',
@@ -140,67 +64,6 @@
 #     authentication:       'plain',
 #     enable_starttls_auto: true
 #   }
-
-#   # Use local storage for ActiveStorage.
-#   config.active_storage.service = :local
-
-#   # Eager load code on boot.
-#   config.eager_load = true
-
-#   # Full error reports are disabled and caching is turned on.
-#   config.consider_all_requests_local       = false
-#   config.action_controller.perform_caching = true
-
-#   # Ensures that a master key has been made available.
-#   # config.require_master_key = true
-
-#   # Disable serving static files from the `/public` folder by default.
-#   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
-
-#   # Do not fallback to assets pipeline if a precompiled asset is missed.
-#   config.assets.compile = false
-
-#   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-#   # config.asset_host = "http://assets.example.com"
-
-#   # Specifies the header that your server uses for sending files.
-#   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-#   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
-
-#   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-#   # config.force_ssl = true
-
-#   # Set log level to :info.
-#   config.log_level = :info
-
-#   # Prepend all log lines with the following tags.
-#   config.log_tags = [ :request_id ]
-
-#   # Use a different cache store in production.
-#   # config.cache_store = :mem_cache_store
-
-#   # Enable locale fallbacks for I18n.
-#   config.i18n.fallbacks = true
-
-#   # Don't log any deprecations.
-#   config.active_support.report_deprecations = false
-
-#   # Use default logging formatter.
-#   config.log_formatter = ::Logger::Formatter.new
-
-#   # Use a different logger for distributed setups.
-#   # require "syslog/logger"
-#   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
-
-#   # Log to STDOUT if specified.
-#   if ENV["RAILS_LOG_TO_STDOUT"].present?
-#     logger           = ActiveSupport::Logger.new(STDOUT)
-#     logger.formatter = config.log_formatter
-#     config.logger    = ActiveSupport::TaggedLogging.new(logger)
-#   end
-
-#   # Do not dump schema after migrations.
-#   config.active_record.dump_schema_after_migration = false
 # end
 require "active_support/core_ext/integer/time"
 
@@ -242,8 +105,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
-
   # Enable locale fallbacks for I18n.
   config.i18n.fallbacks = true
 
@@ -253,7 +114,7 @@ Rails.application.configure do
   # Action Cable settings
   config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
   config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
-  config.action_cable.cable = Rails.application.config_for(:cable)
+  config.action_cable.cable = { adapter: 'redis', url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
 
   # Configure Action Mailer.
   config.action_mailer.delivery_method = :smtp
