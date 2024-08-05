@@ -144,7 +144,7 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   # Action Cable settings
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = "ws://localhost:3001/cable"
   config.action_cable.allowed_request_origins = ['http://localhost:3000']
 
   # Set the time zone.
