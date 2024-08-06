@@ -231,8 +231,7 @@ Rails.application.configure do
 
   # Action Cable settings
   config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-  config.action_cable.allowed_request_origins = ['https://task-test-brown.vercel.app/']
-  config.action_cable.allowed_request_origins = ['file://']
+  config.action_cable.allowed_request_origins = ['https://task-test-brown.vercel.app/', 'file://']
   config.action_cable.disable_request_forgery_protection = true
 
 # Configure Action Mailer for SMTP
