@@ -9,7 +9,7 @@ test:
 
 production:
   adapter: redis
-  url: rediss://red-cqfu7gdds78s73c5snsg:XZFAcmL5YR0tfiiIl5L2EqVy5pir5UN1@oregon-redis.render.com:6379
+  url: redis://red-cqfu7gdds78s73c5snsg:6379
   channel_prefix: your_app_production
 
 # development:

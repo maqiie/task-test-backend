@@ -1,5 +1,4 @@
 
-# require "active_support/core_ext/integer/time"
 
 # Rails.application.configure do
 #   # Settings specified here will take precedence over those in config/application.rb.
@@ -39,8 +38,6 @@
 #   # Do not dump schema after migrations.
 #   config.active_record.dump_schema_after_migration = false
 
-#   config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
-
 #   # Enable locale fallbacks for I18n.
 #   config.i18n.fallbacks = true
 
@@ -49,9 +46,9 @@
 
 #   # Action Cable settings
 #   config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-#   Rails.application.config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
-#   config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app', 'http://localhost:3000']
-#   config.action_cable.cable = Rails.application.config_for(:cable)
+#   config.action_cable.allowed_request_origins = ['https://task-test-brown.vercel.app/']
+#   config.action_cable.allowed_request_origins = ['https://task-test-backend.onrender.com', 'https://task-test-brown.vercel.app/']
+#   config.action_cable.cable = { adapter: 'redis', url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
 
 #   # Configure Action Mailer.
 #   config.action_mailer.delivery_method = :smtp
@@ -65,6 +62,8 @@
 #     enable_starttls_auto: true
 #   }
 # end
+
+
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
@@ -113,9 +112,11 @@ Rails.application.configure do
 
   # Action Cable settings
   config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-  config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
-  config.action_cable.allowed_request_origins = ['https://task-test-backend.onrender.com', 'https://tasker-test.vercel.app']
-  config.action_cable.cable = { adapter: 'redis', url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
+  config.action_cable.allowed_request_origins = ['https://task-test-backend.onrender.com', 'https://task-test-brown.vercel.app']
+
+  # Configure Action Cable with Redis
+  config.action_cable.adapter = :redis
+  config.action_cable.redis = { url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
 
   # Configure Action Mailer.
   config.action_mailer.delivery_method = :smtp
@@ -129,5 +130,3 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 end
-
-
