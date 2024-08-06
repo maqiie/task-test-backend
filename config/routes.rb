@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     post 'accept', on: :member
     post 'decline', on: :member
     post 'reschedule', on: :member
+    get 'history', to: 'invitations#history'
+
   end
   # routes.rb (Rails example)
 get '/users', to: 'users#index', as: 'users'

@@ -55,7 +55,12 @@
     rescue ActiveRecord::RecordInvalid => e
       render json: { error: e.message }, status: :unprocessable_entity
     end
-    
+    def history
+      page = params[:page] || 1
+      limit = params[:limit] || 4
+      invitations = current_user.invitations.history.page(page).per(limit)
+      render json: invitations
+    end
   
     def decline
       ActiveRecord::Base.transaction do

@@ -1,28 +1,28 @@
 # config/cable.yml
-# development:
-#   adapter: redis
-#   url: redis://localhost:6379/1
-  
-
-# test:
-#   adapter: async
-
-# production:
-#   adapter: redis
-#   url: redis://localhost:6379/1
-#   channel_prefix: your_app_production
-
 development:
   adapter: redis
-  url: redis://red-cqfu7gdds78s73c5snsg:6379
+  url: redis://localhost:6379/1
+  
 
 test:
   adapter: async
 
 production:
   adapter: redis
-  url: redis://red-cqfu7gdds78s73c5snsg:6379
+  url: rediss://red-cqfu7gdds78s73c5snsg:XZFAcmL5YR0tfiiIl5L2EqVy5pir5UN1@oregon-redis.render.com:6379
   channel_prefix: your_app_production
-  allowed_request_origins:
-    - https://task-test-backend.onrender.com
-    - https://tasker-test.vercel.app
+
+# development:
+#   adapter: redis
+#   url: redis://red-cqfu7gdds78s73c5snsg:6379
+
+# test:
+#   adapter: async
+
+# production:
+#   adapter: redis
+#   url: redis://red-cqfu7gdds78s73c5snsg:6379
+#   channel_prefix: your_app_production
+#   allowed_request_origins:
+#     - https://task-test-backend.onrender.com
+#     - https://tasker-test.vercel.app

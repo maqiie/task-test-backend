@@ -207,9 +207,5 @@ module DeviseTokenAuthTwitter
       end
     end
 
-    # Action Cable settings
-    config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
-    config.action_cable.allowed_request_origins = ['https://tasker-test.vercel.app']
-    config.action_cable.cable = { adapter: 'redis', url: 'redis://red-cqfu7gdds78s73c5snsg:6379' }
   end
 end
