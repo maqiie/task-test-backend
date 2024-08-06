@@ -245,6 +245,7 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }
   # config/environments/production.rb
+# config/environments/production.rb
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   address:              ENV['SMTP_SERVER'],
@@ -254,5 +255,6 @@ config.action_mailer.smtp_settings = {
   authentication:       ENV['SMTP_AUTHENTICATION'],
   enable_starttls_auto: ENV['SMTP_ENABLE_STARTTLS'] == 'true'
 }
+
 
 end
