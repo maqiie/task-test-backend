@@ -173,9 +173,7 @@ Rails.application.configure do
   # Action Cable settings
   config.action_cable.url = "wss://your-domain.com/cable"
   config.action_cable.allowed_request_origins = ['https://your-domain.com', 'https://another-allowed-origin.com']
-  config.action_cable.adapter = :redis
-  config.action_cable.redis = { url: 'redis://red-cqfu7gdds78s73c5snsg:6379/1', channel_prefix: 'your_app_production' }
-
+ 
   # Configure Action Mailer.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
