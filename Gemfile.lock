@@ -242,7 +242,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.7)
-  redis
+  redis (~> 5.0)
+  redis-client (~> 0.22)
   sidekiq
   sprockets-rails
   sqlite3 (~> 1.4)

@@ -12,8 +12,11 @@ gem 'mail'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg'
 gem 'faker'
-gem 'redis'
+
   # Required for Action Cable (for development and production)
+  gem 'redis', '~> 5.0'
+gem 'redis-client', '~> 0.22'
+
 gem 'httparty'
 gem 'active_storage_validations'
 gem 'cors'
