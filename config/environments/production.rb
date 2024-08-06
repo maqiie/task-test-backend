@@ -171,8 +171,8 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   # Action Cable settings
-  config.action_cable.url = "wss://your-domain.com/cable"
-  config.action_cable.allowed_request_origins = ['https://your-domain.com', 'https://another-allowed-origin.com']
+  config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
+  config.action_cable.allowed_request_origins = ['https://task-test-brown.vercel.app/', 'https://task-test-backend.onrender.com']
  
   # Configure Action Mailer.
   config.action_mailer.delivery_method = :smtp
