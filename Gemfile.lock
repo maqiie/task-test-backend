@@ -243,6 +243,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.7)
   redis
+  redis-client (~> 0.22.0)
   sidekiq
   sprockets-rails
   sqlite3 (~> 1.4)
