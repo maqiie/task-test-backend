@@ -1,17 +1,3 @@
-# # config/cable.yml
-# development:
-#   adapter: redis
-#   url: redis://localhost:6379/1
-  
-
-# test:
-#   adapter: async
-
-# production:
-#   adapter: redis
-#   url: redis://red-cqfu7gdds78s73c5snsg:6379
-#   channel_prefix: your_app_production
-
 development:
   adapter: async
 
@@ -22,19 +8,7 @@ production:
   adapter: redis
   url: redis://red-cqfu7gdds78s73c5snsg:6379
   channel_prefix: your_app_production
-
-
-# development:
-#   adapter: redis
-#   url: redis://red-cqfu7gdds78s73c5snsg:6379
-
-# test:
-#   adapter: async
-
-# production:
-#   adapter: redis
-#   url: redis://red-cqfu7gdds78s73c5snsg:6379
-#   channel_prefix: your_app_production
-#   allowed_request_origins:
-#     - https://task-test-backend.onrender.com
-#     - https://tasker-test.vercel.app
+  # Optional: Specify allowed origins if you have CORS issues
+  # allowed_request_origins:
+  #   - https://task-test-backend.onrender.com
+  #   - https://tasker-test.vercel.app
