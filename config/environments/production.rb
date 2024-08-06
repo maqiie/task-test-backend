@@ -232,9 +232,8 @@ Rails.application.configure do
   # Action Cable settings
   config.action_cable.url = "wss://task-test-backend.onrender.com/cable"
   config.action_cable.allowed_request_origins = ['https://task-test-brown.vercel.app/']
-  # Action Cable Redis configuration
-  config.action_cable.redis = { url: 'redis://red-cqfu7gdds78s73c5snsg:6379', channel_prefix: 'your_app_production' }
-  # Configure Action Mailer.
+  
+  
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
