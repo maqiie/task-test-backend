@@ -234,26 +234,17 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = ['https://task-test-brown.vercel.app/']
   config.action_cable.allowed_request_origins = ['file://']
   config.action_cable.disable_request_forgery_protection = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address:              'smtp.gmail.com',
-  #   port:                 587,
-  #   domain:               'email.com',
-  #   user_name:            ENV['GMAIL_USERNAME'],
-  #   password:             ENV['GMAIL_PASSWORD'],
-  #   authentication:       'plain',
-  #   enable_starttls_auto: true
-  # }
-  # config/environments/production.rb
-# config/environments/production.rb
+
+# Configure Action Mailer for SMTP
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-  address:              ENV['SMTP_SERVER'],
-  port:                 ENV['SMTP_PORT'],
-  user_name:            ENV['SMTP_USERNAME'],
-  password:             ENV['SMTP_PASSWORD'],
-  authentication:       ENV['SMTP_AUTHENTICATION'],
-  enable_starttls_auto: ENV['SMTP_ENABLE_STARTTLS'] == 'true'
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'yourproductiondomain.com', # Ensure this is your production domain
+  user_name:            ENV['GMAIL_USERNAME'],
+  password:             ENV['GMAIL_PASSWORD'],
+  authentication:       'plain',
+  enable_starttls_auto: true
 }
 
 
