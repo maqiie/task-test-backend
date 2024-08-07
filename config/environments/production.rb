@@ -243,8 +243,8 @@ config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'yourproductiondomain.com', # Ensure this is your production domain
-  user_name:            ENV['SMTP_USERNAME'], # Ensure this matches the environment variable
-  password:             ENV['SMTP_PASSWORD'], # Ensure this matches the environment variable
+  user_name:            'markpaul.dev@gmail.com', # Ensure this matches the environment variable
+  password:             'abjd zvjf ywlq vhmt', # Ensure this matches the environment variable
   authentication:       'plain',
   enable_starttls_auto: true
 }
