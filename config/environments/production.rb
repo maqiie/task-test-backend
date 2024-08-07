@@ -235,16 +235,23 @@ Rails.application.configure do
   config.action_cable.disable_request_forgery_protection = true
 
 # Configure Action Mailer for SMTP
+# config/environments/production.rb
+
+# Ensure you have these lines:
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'yourproductiondomain.com', # Ensure this is your production domain
-  user_name:            ENV['GMAIL_USERNAME'],
-  password:             ENV['GMAIL_PASSWORD'],
+  user_name:            ENV['SMTP_USERNAME'], # Ensure this matches the environment variable
+  password:             ENV['SMTP_PASSWORD'], # Ensure this matches the environment variable
   authentication:       'plain',
   enable_starttls_auto: true
 }
+
+# Additional settings for production
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_url_options = { host: 'yourproductiondomain.com' }
 
 
 end
