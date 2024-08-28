@@ -42,12 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "chat_rooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "chatrooms", force: :cascade do |t|
     t.bigint "user1_id"
     t.bigint "user2_id"
@@ -101,7 +95,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
   create_table "messages", force: :cascade do |t|
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
-    t.text "content"
+    t.text "content", null: false
+    t.string "file_name"
+    t.string "file_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
