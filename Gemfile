@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.6"
+# ruby "2.7.6"
 gem 'devise'
 gem 'devise_token_auth'
 gem 'rack-cors'
@@ -12,6 +12,10 @@ gem 'mail'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg'
 gem 'faker'
+
+
+gem 'webpush'
+
 
   # Required for Action Cable (for development and production)
   gem 'redis', '~> 5.0'

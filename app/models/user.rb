@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :reminders
 
+  has_many :chatrooms_as_user1, class_name: 'Chatroom', foreign_key: 'user1_id'
+  has_many :chatrooms_as_user2, class_name: 'Chatroom', foreign_key: 'user2_id'
 
   has_many :reminder_users
   has_many :tagged_reminders, through: :reminder_users, source: :reminder

@@ -20,9 +20,9 @@ class RemindersController < ApplicationController
  
   # def create
   #   reminder_params = parse_and_validate_reminder_params
-  
+    
   #   @reminder = current_user.reminders.new(reminder_params.except(:user_ids))
-  
+    
   #   begin
   #     ActiveRecord::Base.transaction do
   #       if @reminder.save
@@ -39,6 +39,7 @@ class RemindersController < ApplicationController
   
   #         render json: { status: 'success', message: 'Reminder created successfully', reminder: convert_reminder_to_local_time(@reminder) }, status: :created
   #       else
+  #         Rails.logger.error "Failed to create reminder: #{@reminder.errors.full_messages.join(', ')}"
   #         render json: { status: 'error', message: 'Failed to create reminder', errors: @reminder.errors.full_messages }, status: :unprocessable_entity
   #       end
   #     end
@@ -48,11 +49,10 @@ class RemindersController < ApplicationController
   #     handle_exception(e, :internal_server_error)
   #   end
   # end
+  
   def create
-    reminder_params = parse_and_validate_reminder_params
-    
     @reminder = current_user.reminders.new(reminder_params.except(:user_ids))
-    
+  
     begin
       ActiveRecord::Base.transaction do
         if @reminder.save
@@ -80,7 +80,6 @@ class RemindersController < ApplicationController
     end
   end
   
-  
 
   def update
     if @reminder.update(reminder_params)
@@ -104,7 +103,17 @@ class RemindersController < ApplicationController
     end
   end
 
+
+
+
+
+
+
   private
+
+  def reminder_params
+    params.require(:reminder).permit(:title, :description, :due_date, :is_special_event, :occasion, :duration, :priority, user_ids: [])
+  end
 
   def parse_and_validate_reminder_params
     reminder_params = params.require(:reminder).permit(:title, :due_date, :priority, :location, :description, :duration, user_ids: [])
@@ -167,10 +176,7 @@ class RemindersController < ApplicationController
     render json: { error: 'Reminder not found or unauthorized' }, status: :not_found unless @reminder
   end
 
-  def reminder_params
-    params.require(:reminder).permit(:title, :description, :is_special_event, :occasion, :due_date, :repeat_interval, :repeat_interval_unit, :location, :priority, :calendar_id, :duration, user_ids: [])
-  end
-
+ 
   def send_creation_notification(reminder)
     time_remaining = distance_of_time_in_words(Time.current, reminder.due_date)
     message = "Created #{reminder.title} which is due in #{time_remaining}"
@@ -235,4 +241,13 @@ class RemindersController < ApplicationController
   def handle_parse_error(exception)
     render json: { error: "Error parsing request parameters: #{exception.message}" }, status: :bad_request
   end
+
+   # def reminder_params
+  #   params.require(:reminder).permit(:title, :description, :is_special_event, :occasion, :due_date, :repeat_interval, :repeat_interval_unit, :location, :priority, :calendar_id, :duration, user_ids: [])
+  # end
+  
+
+  
+  
+  
 end

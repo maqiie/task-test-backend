@@ -209,6 +209,7 @@
 #     )
 #   end
 # end
+
 class FriendRequestsController < ApplicationController
   include Devise::Controllers::Helpers
   before_action :authenticate_user!

@@ -1,0 +1,16 @@
+                                          Table "public.chatrooms"
+   Column   |              Type              | Collation | Nullable |                Default                
+------------+--------------------------------+-----------+----------+---------------------------------------
+ id         | bigint                         |           | not null | nextval('chatrooms_id_seq'::regclass)
+ user1_id   | bigint                         |           |          | 
+ user2_id   | bigint                         |           |          | 
+ created_at | timestamp(6) without time zone |           | not null | 
+ updated_at | timestamp(6) without time zone |           | not null | 
+Indexes:
+    "chatrooms_pkey" PRIMARY KEY, btree (id)
+    "index_chatrooms_on_user1_id" btree (user1_id)
+    "index_chatrooms_on_user2_id" btree (user2_id)
+Foreign-key constraints:
+    "fk_rails_92cc774c20" FOREIGN KEY (user1_id) REFERENCES users(id)
+    "fk_rails_b81ed5d49f" FOREIGN KEY (user2_id) REFERENCES users(id)
+
