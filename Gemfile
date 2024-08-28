@@ -24,7 +24,7 @@ gem 'redis-client', '~> 0.22'
 gem 'httparty'
 gem 'active_storage_validations'
 gem 'cors'
-gem 'nokogiri'
+gem 'nokogiri', '>= 1.15.4'
 
 
 
