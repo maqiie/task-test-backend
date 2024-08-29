@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
   end
   has_many :sent_friend_requests, class_name: 'FriendRequest', foreign_key: 'sender_id'
 
-  # Association for received friend requests
  
  
  
