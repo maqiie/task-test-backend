@@ -12,6 +12,7 @@ gem 'mail'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg'
 gem 'faker'
+gem 'ice_cube'
 
 
 gem 'webpush'

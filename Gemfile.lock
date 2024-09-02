@@ -111,6 +111,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
+    ice_cube (0.17.0)
     io-console (0.7.2)
     irb (1.14.0)
       rdoc (>= 4.0.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   httparty
+  ice_cube
   jsonapi-serializer
   mail
   nokogiri (>= 1.15.4)
@@ -256,6 +258,9 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   tzinfo-data
   webpush
+
+RUBY VERSION
+   ruby 2.7.6p219
 
 BUNDLED WITH
    2.4.22

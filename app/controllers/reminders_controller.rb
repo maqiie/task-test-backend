@@ -18,11 +18,11 @@ class RemindersController < ApplicationController
   end
 
  
+
+  
   # def create
-  #   reminder_params = parse_and_validate_reminder_params
-    
   #   @reminder = current_user.reminders.new(reminder_params.except(:user_ids))
-    
+  
   #   begin
   #     ActiveRecord::Base.transaction do
   #       if @reminder.save
@@ -60,11 +60,11 @@ class RemindersController < ApplicationController
           handle_creation_notifications(@reminder)
           handle_scheduled_notifications(@reminder) if @reminder.due_date > Time.current
   
-          # Broadcast notification
           reminder_params[:user_ids].each do |user_id|
             ActionCable.server.broadcast("notifications_#{user_id}", {
               message: 'You have a new task assigned!'
             })
+            send_tagged_message(current_user.id, user_id, @reminder) # Send a message to the tagged user
           end if reminder_params[:user_ids].present?
   
           render json: { status: 'success', message: 'Reminder created successfully', reminder: convert_reminder_to_local_time(@reminder) }, status: :created
@@ -80,6 +80,8 @@ class RemindersController < ApplicationController
     end
   end
   
+
+
 
   def update
     if @reminder.update(reminder_params)
@@ -102,18 +104,21 @@ class RemindersController < ApplicationController
       render json: { status: 'error', message: 'Failed to complete reminder', errors: @reminder.errors }, status: :unprocessable_entity
     end
   end
-
-
-
-
+  
 
 
 
   private
 
   def reminder_params
-    params.require(:reminder).permit(:title, :description, :due_date, :is_special_event, :occasion, :duration, :priority, user_ids: [])
+    params.require(:reminder).permit(
+      :title, :description, :due_date, :priority, :duration, :recurrence_frequency, :recurrence_interval,
+      location: [:place_id, :licence, :osm_type, :osm_id, :lat, :lon, :class, :type, :place_rank, :importance, :addresstype, :name, :display_name, :boundingbox],
+      user_ids: []
+    )
   end
+  
+
 
   def parse_and_validate_reminder_params
     reminder_params = params.require(:reminder).permit(:title, :due_date, :priority, :location, :description, :duration, user_ids: [])
@@ -230,6 +235,25 @@ class RemindersController < ApplicationController
     { status: 'success', message: 'Email notification sent successfully' }
   end
 
+  def send_tagged_message(sender_id, tagged_user_id, reminder)
+    chatroom = Chatroom.between(sender_id, tagged_user_id).first
+  
+    unless chatroom
+      chatroom = Chatroom.create!(user1_id: sender_id, user2_id: tagged_user_id)
+    end
+  
+    message_content = "You've been tagged in a task: #{reminder.title}, due on #{reminder.due_date.strftime('%Y-%m-%d %H:%M')}"
+  
+    Message.create!(
+      chatroom_id: chatroom.id,
+      user_id: tagged_user_id,
+      sender_id: sender_id,
+      content: message_content
+    )
+  end
+ 
+  
+  
   def notify_user(user)
     ActionCable.server.broadcast "notifications_#{user.id}", { message: 'You have a new task assigned!' }
   end
@@ -241,13 +265,5 @@ class RemindersController < ApplicationController
   def handle_parse_error(exception)
     render json: { error: "Error parsing request parameters: #{exception.message}" }, status: :bad_request
   end
-
-   # def reminder_params
-  #   params.require(:reminder).permit(:title, :description, :is_special_event, :occasion, :due_date, :repeat_interval, :repeat_interval_unit, :location, :priority, :calendar_id, :duration, user_ids: [])
-  # end
-  
-
-  
-  
   
 end

@@ -33,7 +33,7 @@ module DeviseTokenAuthTwitter
     # CORS configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000',  'https://task-test-brown.vercel.app', 'https://tasker-test.vercel.app','http://localhost', 'capacitor://localhost', 'http://127.0.0.1:8100', 'capacitor://localhost'
+        origins 'http://localhost:3000',  'https://task-test-brown.vercel.app', 'https://tasker-test.vercel.app','http://localhost', 'capacitor://localhost', 'http://127.0.0.1:8100', 'capacitor://localhost', 'https://nominatim.openstreetmap.org/search'
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],

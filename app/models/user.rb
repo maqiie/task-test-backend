@@ -8,12 +8,18 @@ class User < ActiveRecord::Base
   has_many :chatrooms_as_user1, class_name: 'Chatroom', foreign_key: 'user1_id'
   has_many :chatrooms_as_user2, class_name: 'Chatroom', foreign_key: 'user2_id'
 
+
+
+ 
+  has_many :messages, through: :chatrooms
   has_many :reminder_users
   has_many :tagged_reminders, through: :reminder_users, source: :reminder
   has_many :notes
   has_many :notifications
   has_many :invitations
   has_many :invited_reminders, through: :invitations, source: :reminder
+  has_many :messages
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
 
 
   

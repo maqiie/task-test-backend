@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_02_100235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -100,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
     t.string "file_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sender_id", null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -160,6 +161,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
     t.string "occasion"
     t.boolean "is_special_event", default: false
     t.string "label"
+    t.string "recurrence_frequency"
+    t.integer "recurrence_interval"
+    t.string "recurrence_interval_unit"
     t.index ["note_id"], name: "index_reminders_on_note_id"
     t.index ["user_id"], name: "index_reminders_on_user_id"
   end
@@ -187,6 +191,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
     t.date "birthday"
     t.integer "receiver_id"
     t.string "auth_token"
+    t.string "time_zone", default: "UTC"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -206,6 +211,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_091400) do
   add_foreign_key "invitations", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "notes", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "reminder_users", "reminders"
